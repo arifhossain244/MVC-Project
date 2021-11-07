@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+    <style>
+        body {
+            padding-top: 70px;
+        }
+    </style>
+    @RenderSection("styles", false)
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top border-bottom">
+        <div class="container-fluid">
+            <span class="navbar-brand">Evidance Exam(08)</span>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Sales", "Index", "Sales", new { }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Products", "Index", "Product", new { }, new { @class = "nav-link" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" style="min-height:calc(100vh - 140px)">
+        @RenderBody()
+    </div>
+    <footer class="container">
+        &copy;@DateTime.Now.Year - MVC5 Application
+        <h6 style="text-align:center">1264996-Md Arif Hossain</h6>
+    </footer>
+    @RenderSection("scripts", false)
+</body>
+</html>

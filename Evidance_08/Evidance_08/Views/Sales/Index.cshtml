@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Evidance_08.Models.Sale>
+
+@using Evidance_08.Models.MetaData
+@{
+    ViewBag.Title = "Index";
+}
+
+@*@Html.Partial("_SalePartial", Model)*@
+<div class="row">
+    <div class="col">
+        <div class="display-5">Sale Catalog</div>
+        <div class="d-flex justify-content-end mb-1">
+            <a href="@Url.Action("Create", "Sales")" class="btn btn-outline-primary">Create New</a>
+        </div>
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Quantity)</th>
+                    <th>@Html.DisplayNameFor(x => x.SalesDate)</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var s in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(x => s.Quantity) </td>
+                        <td>@Html.DisplayFor(x => s.SalesDate) </td>
+                        <td style="width:150px;" class="text-center">
+                            <a title="Edit this item" href="@Url.Action("Edit", "Sales", new { id=s.SaleId})" class="btn btn-outline-primary btn-sm ">Edit</a>
+                            <a title="Delete this item" href="@Url.Action("Delete", "Sales", new { id=s.SaleId})" class="btn btn-outline-danger btn-sm ">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

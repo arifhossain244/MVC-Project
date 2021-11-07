@@ -1,0 +1,66 @@
+﻿@model Evidance_08.ViewModels.ProductViewVM
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("Edit", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.HiddenFor(x => x.ProductId)
+    <h4>Create Products</h4>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.ProductName, new { @class = "col-form-label col-form-label-sm col-2 text-end" })
+        <div class="col-5">
+            @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.ProductName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.Stock, new { @class = "col-form-label col-form-label-sm col-2 text-end" })
+        <div class="col-5">
+            @Html.TextBoxFor(x => x.Stock, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.Stock, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+        @Html.LabelFor(x => x.SaleId, new { @class = "col-form-label col-form-label-sm col-2 text-end" })
+        <div class="col-5">
+            @Html.TextBoxFor(x => x.SaleId, new { @class = "form-control form-control-sm" })
+            @Html.ValidationMessageFor(x => x.SaleId, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-2">
+        @Html.LabelFor(x => x.Picture, new { @class = "col-form-label col-form-label-sm text-end col-2" })
+        <div class="col-5">
+            @Html.TextBoxFor(x => x.Picture, new { @class = "form-control form-control-sm", type = "file" })
+            @Html.ValidationMessageFor(x => x.Picture, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group row mb-1">
+
+        <div class="col-10 offset-2">
+            <button type="submit" class="btn btn-success">Save</button>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col">
+        @Html.ActionLink("Back to list", "Index")
+    </div>
+</div>
+@section styles {
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+    <link href="~/Content/main.css" rel="stylesheet" type="text/css" />
+}
+@section scripts {
+
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $("#SalesDate").datepicker({
+            format: 'yyyy-mm-dd'
+        });
+    </script>
+}
