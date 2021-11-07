@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Evidance_10.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Products</h3>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Create", "Create", "Products", new { }, new { @class = "btn btn-outline-primary btn-sm" })
+        </div>
+        <table class="table table-bordered" style="border-color: #647687">
+            <thead style="background-color: #B0C4DE">
+                <tr>
+                    <th>@Html.DisplayNameFor(x => x.Picture)</th>
+                    <th>@Html.DisplayNameFor(x => x.ProductName)</th>
+                    <th>@Html.DisplayNameFor(x => x.Price)</th>
+                    <th>@Html.DisplayNameFor(x => x.Customer)</th>
+                    <th>@Html.DisplayNameFor(x => x.SalesDate)</th>
+                    <th>@Html.DisplayNameFor(x => x.Discontinued)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr style="background-color: rgba(100, 118, 135, .2)">
+                        <td><img src="~/Uploads/@p.Picture" class="img-thumbnail border-dark" width="40" /></td>
+                        <td>@Html.DisplayFor(x => p.ProductName)</td>
+                        <td>@Html.DisplayFor(x => p.Price)</td>
+                        <td>@Html.DisplayFor(x => p.Customer.CustomerName)</td>
+                        <td>@Html.DisplayFor(x => p.SalesDate)</td>
+                        <td>@(p.Discontinued ? "Yes": "No")</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Products", new { id = p.ProductId }, new { @class = "btn btn-outline-success btn-sm" })
+                            @Html.ActionLink("Delete", "Delete", "Products", new { id = p.ProductId }, new { @class = "btn btn-outline-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

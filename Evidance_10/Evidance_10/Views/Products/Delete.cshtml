@@ -1,0 +1,69 @@
+﻿@model Evidance_10.Models.Product
+@{
+    ViewBag.Title = "Delete";
+}
+<style>
+    #Box {
+        margin-left: 180px;
+        margin-right: 270px;
+        background-color: rgba(6, 114, 101, .2);
+        box-shadow: 0 4px 8px 0 rgb(10 52 47 / 0.2), 0 6px 20px 0 rgba(6, 114, 101, .2);
+        padding: 10px;
+    }
+</style>
+<div class="row" id="Box">
+    <div class="col-12">
+        <h3>Confirm Delete</h3>
+        <div id="placeholder"></div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.ProductName, new { @class = "col-form-label col-2" })
+            <div class="col-5">
+                @Html.DisplayFor(x => x.ProductName)
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.Price, new { @class = "col-form-label col-2" })
+            <div class="col-5">
+                @Html.DisplayFor(x => x.Price)
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.SalesDate, new { @class = "col-form-label col-2" })
+            <div class="col-5">
+                @Html.DisplayFor(x => x.SalesDate)
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.Picture, new { @class = "col-form-label col-2" })
+            <div class="col-5">
+                @Html.DisplayFor(x => x.Picture)
+            </div>
+        </div>
+        <div class="form-group row mb-1">
+            @Html.LabelFor(x => x.CustomerId, new { @class = "col-form-label col-2" })
+            <div class="col-5">
+                @Html.DisplayFor(x => x.Customer.CustomerName)
+            </div>
+        </div>
+        <div class="form-group row my-1 align-middle">
+            <div class="col-4 offset-2">
+                <div class="form-check form-check-inline">
+                    @Html.CheckBoxFor(x => x.Discontinued, new { @class = "form-check-input ", disabled = "true" })
+                    @Html.LabelFor(x => x.Discontinued, new { @class = "form-check-label" })
+                </div>
+            </div>
+        </div>
+        @using (Html.BeginForm("Delete", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(x => x.ProductId)
+            <div class="form-group row my-1 ">
+                <div class="col-10 offset-2">
+                    <button type="submit" class="btn bg-danger">Confirm Delete</button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-12">
+        &lt;&lt;&lt;@Html.ActionLink("Back To List", "index")
+    </div>
+</div>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Evidance_10.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row">
+    <div class="col-12">
+        <h3>Customers</h3>
+        <div class="d-flex justify-content-end mb-1">
+            @Html.ActionLink("Create", "Create", "Customers", new { }, new { @class = "btn btn-outline-primary btn-sm" })
+        </div>
+        <table class="table table-bordered" style="border-color: #647687">
+            <thead style="background-color: #B0C4DE">
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(x => x.CustomerName)</th>
+                    <th>@Html.DisplayNameFor(x => x.PhoneNumber)</th>
+                    <th>@Html.DisplayNameFor(x => x.Email)</th>
+                    <th>@Html.DisplayNameFor(x => x.City)</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var c in Model)
+                {
+                    <tr style="background-color: rgba(100, 118, 135, .2)">
+                        <td>@Html.DisplayFor(x => c.CustomerName)</td>
+                        <td>@Html.DisplayFor(x => c.PhoneNumber)</td>
+                        <td>@Html.DisplayFor(x => c.Email)</td>
+                        <td>@Html.DisplayFor(x => c.City)</td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", "Customers", new { id = c.CustomerId }, new { @class = "btn btn-outline-success btn-sm" })
+                            @Html.ActionLink("Delete", "Delete", "Customers", new { id = c.CustomerId }, new { @class = "btn btn-outline-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

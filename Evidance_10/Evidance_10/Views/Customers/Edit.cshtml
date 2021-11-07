@@ -1,0 +1,67 @@
+﻿@model Evidance_10.Models.Customer
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    #Box {
+        margin-left: 180px;
+        margin-right: 270px;
+        background-color: rgba(6, 114, 101, .2);
+        box-shadow: 0 4px 8px 0 rgb(10 52 47 / 0.2), 0 6px 20px 0 rgba(6, 114, 101, .2);
+        padding: 10px;
+    }
+</style>
+<div class=" row" id="Box">
+    <div class=" col-12">
+        <h3>Edit Customer</h3>
+        <div id="placeholder"></div>
+        @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "placeholder" }))
+        {
+            @Html.HiddenFor(x => x.CustomerId)
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.CustomerName, new { @class = "col-form-label col-2" })
+                <div class="col-5">
+                    @Html.TextBoxFor(x => x.CustomerName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.CustomerName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.PhoneNumber, new { @class = "col-form-label col-2" })
+                <div class="col-5">
+                    @Html.TextBoxFor(x => x.PhoneNumber, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.PhoneNumber, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.Email, new { @class = "col-form-label col-2" })
+                <div class="col-5">
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.City, new { @class = "col-form-label col-2" })
+                <div class="col-5">
+                    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.City, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class=" form-group row mb-1">
+                <div class="col-10 offset-2">
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-12">
+        &lt;&lt;&lt;@Html.ActionLink("Back To List", "Index")
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
+

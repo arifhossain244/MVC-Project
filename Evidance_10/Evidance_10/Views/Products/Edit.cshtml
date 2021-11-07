@@ -1,0 +1,89 @@
+﻿@model Evidance_10.ViewModels.ProductEditModel
+@{
+    ViewBag.Title = "Edit";
+}
+<style>
+    #Box {
+        margin-left: 180px;
+        margin-right: 270px;
+        background-color: rgba(6, 114, 101, .2);
+        box-shadow: 0 4px 8px 0 rgb(10 52 47 / 0.2), 0 6px 20px 0 rgba(6, 114, 101, .2);
+        padding: 10px;
+    }
+</style>
+<div class="row" id="Box">
+    <div class="col-12">
+        <h3>Edit product</h3>
+        <div id="placeholder"></div>
+
+        @using (Html.BeginForm("Edit", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.HiddenFor(x => x.ProductId)
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.ProductName, new { @class = "col-form-label col-2" })
+                <div class="col-5">
+                    @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.ProductName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.Price, new { @class = "col-form-label col-2" })
+                <div class="col-5">
+                    @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.SalesDate, new { @class = "col-form-label col-2" })
+                <div class="col-5">
+                    @Html.TextBoxFor(x => x.SalesDate, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.SalesDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.Picture, new { @class = "col-form-label col-2" })
+                <div class="col-5">
+                    @Html.TextBoxFor(x => x.Picture, new { @class = "form-control", type = "file" })
+                    @Html.ValidationMessageFor(x => x.Picture, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row mb-1">
+                @Html.LabelFor(x => x.CustomerId, new { @class = "col-form-label col-2" })
+                <div class="col-5">
+                    @Html.DropDownListFor(x => x.CustomerId, new SelectList(ViewBag.Customers, "CustomerId", "CustomerName"), "Seletec", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(x => x.CustomerId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row my-1 align-middle">
+                <div class="col-4 offset-2">
+                    <div class="form-check form-check-inline">@Html.CheckBoxFor(x => x.Discontinued, new { @class = "form-check-input" })  @Html.LabelFor(x => x.Discontinued, new { @class = "form-check-label" })</div>
+                    @Html.ValidationMessageFor(x => x.Discontinued, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group row my-1">
+                <div class="col-10 offset-2">
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-12">
+        &lt;&lt;&lt;@Html.ActionLink("Back To List", "Index")
+    </div>
+</div>
+@section styles{
+
+    <link href="~/Content/bootstrap-datepicker.standalone.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Scripts/jquery-3.6.0.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script>
+        $("#SalesDate").datepicker({
+            format: "yyyy-mm-dd"
+        });
+    </script>
+}
